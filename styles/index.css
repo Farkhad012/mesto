@@ -1,0 +1,35 @@
+@import './reset.css';
+@import './normalize.css';
+@import './root.css';
+@import '../blocks/button/button.css';
+@import '../blocks/header/header.css';
+@import '../blocks/profile/profile.css';
+@import '../blocks/gallery/gallery.css';
+@import '../blocks/card/card.css';
+@import '../blocks/footer/footer.css';
+
+.body {
+  background-color: var(--color-dark);
+  font-family: var(--font-primary);
+  font-size: clamp(0.875rem, 0.7917rem + 0.4167vw, 1.125rem);
+  color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 922px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
+  }
+}
+
+.main {
+  flex: 1;
+}

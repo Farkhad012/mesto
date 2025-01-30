@@ -1,0 +1,22 @@
+@import '../fonts/fonts.css';
+
+:root {
+  /* colors */
+  --color-dark: #000;
+  --color-light: #fff;
+  --color-gray: #545454;
+  --color-text-modal: #c4c4c4;
+  --color-text-footer: #545454;
+  --color-border: #a5a5a5;
+
+  /* fonts */
+  --font-primary: 'Inter', sans-derif;
+
+  /* sizes */
+  --padding-x: 20px; /* max: , min:  */
+  --edit-button-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --card-title-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --card-image-description-size: 12px;
+  --gap-column: 17px;
+  --gap-row: 20px;
+}

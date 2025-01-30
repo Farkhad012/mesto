@@ -1,0 +1,35 @@
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card__image {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.card__description {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 42px;
+  padding: 25px 21px;  
+}
+
+.card__title {
+  font-size: 24px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__delete-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
