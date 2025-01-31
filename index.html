@@ -24,12 +24,12 @@
           height="120">
         <div class="profile__info">
           <div class="profile__info-heading">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title" id="username">Жак-Ив Кусто</h1>
             <button class="profile__edit-button button" title="edit info">
               <img src="./images/icons/edit.svg" alt="">
             </button>
           </div>
-          <p>Исследователь океана</p>
+          <p id="occupation">Исследователь океана</p>
         </div>
         <button class="profile__add-button button" title="add content">
           <img src="./images/icons/add.svg" alt="">
@@ -254,7 +254,7 @@
       <h2 class="modal__title h2">Редактировать</h2>
       <form id="profile-edit-form" class="form" action="">
         <input 
-          id="name"
+          id="name-input"
           class="form__input" 
           type="text" 
           name="name" 
@@ -262,14 +262,14 @@
           required
         >
         <input 
-          id="name"
+          id="occupation-input"
           class="form__input" 
           type="text" 
-          name="job" 
+          name="occupation" 
           placeholder="Место работы"
           required
         >
-        <button class="form__button" type="submit" title="сохранить">
+        <button id="form__edit-button" class="form__button" type="submit" title="сохранить">
           Сохранить
         </button>
       </form>
