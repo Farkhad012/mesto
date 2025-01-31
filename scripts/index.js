@@ -1,5 +1,5 @@
 import { username, occupation, editButton, addButton } from '../blocks/profile/profile.js';
-import { modalEdit, modalAdd } from '../blocks/modal/modal.js';
+import { modalEdit, modalAdd, enableScroll } from '../blocks/modal/modal.js';
 import { userNameInput, occupationInput, formEditButton } from '../blocks/form/form.js';
 
 function disableScroll() {
@@ -25,5 +25,6 @@ formEditButton.addEventListener('click', (event) => {
   occupation.textContent = occupationInput.value;
   username.textContent = userNameInput.value;
   modalEdit.classList.remove('opened');
+  enableScroll()
 })
 
