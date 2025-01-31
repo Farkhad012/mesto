@@ -15,6 +15,7 @@
   /* sizes */
   --padding-x: 20px; /* max: , min:  */
   --edit-button-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --close-button-size: clamp(1.25rem, 1rem + 1.25vw, 2rem);
   --card-title-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
   --card-image-description-size: 12px;
   --gap-column: 17px;

@@ -22,18 +22,16 @@
       <div class="profile__inner container">
         <img class="profile__image" src="./images/pictures/Jacques-Yves-Cousteau.jpg" alt="avatar" width="120"
           height="120">
-
         <div class="profile__info">
           <div class="profile__info-heading">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button button">
+            <button class="profile__edit-button button" title="edit info">
               <img src="./images/icons/edit.svg" alt="">
             </button>
           </div>
           <p>Исследователь океана</p>
         </div>
-
-        <button class="profile__add-button button">
+        <button class="profile__add-button button" title="add content">
           <img src="./images/icons/add.svg" alt="">
         </button>
 
@@ -45,7 +43,7 @@
         <div class="gallery__item card">
           <img class="card__image" src="./images/pictures/karachaevsk.jpg" alt="Карачаевск">
           <div class="card__description">
-            <h2 class="card__title">Карачаевск</h2>
+            <h2 class="card__title h2">Карачаевск</h2>
             <button class="card__like-button button">
               <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -70,7 +68,7 @@
         <div class="gallery__item card">
           <img class="card__image" src="./images/pictures/elbrus.png" alt="Гора Эльбрус">
           <div class="card__description">
-            <h2 class="card__title">Гора Эльбрус</h2>
+            <h2 class="card__title h2">Гора Эльбрус</h2>
             <button class="card__like-button button">
               <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -95,7 +93,7 @@
         <div class="gallery__item card">
           <img class="card__image" src="./images/pictures/dombai.png" alt="Домбай">
           <div class="card__description">
-            <h2 class="card__title">Домбай</h2>
+            <h2 class="card__title h2">Домбай</h2>
             <button class="card__like-button button">
               <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -118,9 +116,9 @@
           </button>
         </div>
         <div class="gallery__item card">
-          <img class="card__image" src="./images/pictures/elbrus.png" alt="Гора Эльбрус">
+          <img class="card__image" src="./images/pictures/avoriaz.jpg" alt="Авориаз">
           <div class="card__description">
-            <h2 class="card__title">Гора Эльбрус</h2>
+            <h2 class="card__title h2">Авориаз</h2>
             <button class="card__like-button button">
               <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -143,9 +141,9 @@
           </button>
         </div>
         <div class="gallery__item card">
-          <img class="card__image" src="./images/pictures/dombai.png" alt="Домбай">
+          <img class="card__image" src="./images/pictures/morzine.jpg" alt="Морзин">
           <div class="card__description">
-            <h2 class="card__title">Домбай</h2>
+            <h2 class="card__title h2">Морзин</h2>
             <button class="card__like-button button">
               <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -168,9 +166,9 @@
           </button>
         </div>
         <div class="gallery__item card">
-          <img class="card__image" src="./images/pictures/karachaevsk.jpg" alt="Карачаево-Черкессия">
+          <img class="card__image" src="./images/pictures/rieserferner-ahrn.jpg" alt="Ризерфернер-Арн">
           <div class="card__description">
-            <h2 class="card__title">Карачаево-Черкессия</h2>
+            <h2 class="card__title h2">Ризерфернер-Арн</h2>
             <button class="card__like-button button">
               <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -201,6 +199,84 @@
       <p>© 2020 Mesto Russia</p>
     </div>
   </footer>
+
+  <div 
+    id="modal-add-info" 
+    class="modal modal-add" 
+    role="dialog" 
+    aria-labelledby="modal-edit-info__title"
+    aria-modal="true"
+    >
+    <div class="modal__content">
+      <button class="modal__close-button" type="button">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z" fill="white"/>
+        </svg>          
+      </button>
+      <h2 class="modal__title h2">Новое место</h2>
+      <form id="profile-edit-form" class="form" action="">
+        <input 
+          id="name"
+          class="form__input" 
+          type="text" 
+          name="title" 
+          placeholder="Название"
+          required
+        >
+        <input 
+          id="name"
+          class="form__input" 
+          type="text" 
+          name="link" 
+          placeholder="Ссылка на картинку"
+          required
+        >
+        <button class="form__button" type="submit" title="создать">
+          Создать
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div 
+    id="modal-edit-info" 
+    class="modal modal-edit" 
+    role="dialog" 
+    aria-labelledby="modal-edit-info__title"
+    aria-modal="true"
+  >
+    <div class="modal__content">
+      <button class="modal__close-button" type="button">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z" fill="white"/>
+        </svg>          
+      </button>
+      <h2 class="modal__title h2">Редактировать</h2>
+      <form id="profile-edit-form" class="form" action="">
+        <input 
+          id="name"
+          class="form__input" 
+          type="text" 
+          name="name" 
+          placeholder="Имя"
+          required
+        >
+        <input 
+          id="name"
+          class="form__input" 
+          type="text" 
+          name="job" 
+          placeholder="Место работы"
+          required
+        >
+        <button class="form__button" type="submit" title="сохранить">
+          Сохранить
+        </button>
+      </form>
+  </div>
+  </div>
+  
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>

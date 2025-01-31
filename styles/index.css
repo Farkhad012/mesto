@@ -6,6 +6,8 @@
 @import '../blocks/profile/profile.css';
 @import '../blocks/gallery/gallery.css';
 @import '../blocks/card/card.css';
+@import '../blocks/modal/modal.css';
+@import '../blocks/form/form.css';
 @import '../blocks/footer/footer.css';
 
 .body {
@@ -15,6 +17,7 @@
   color: var(--color-light);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .container {
@@ -32,4 +35,10 @@
 
 .main {
   flex: 1;
+}
+
+.h2 {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-dark);
 }
