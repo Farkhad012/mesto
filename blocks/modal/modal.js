@@ -3,6 +3,10 @@ export const modalCloseButtons = Array.from(document.querySelectorAll('.modal__c
 export const modalEdit = document.querySelector('.modal-edit');
 export const modalAdd = document.querySelector('.modal-add');
 
+export function disableScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
 export function enableScroll() {
   document.body.style.overflow = 'visible';
 }
