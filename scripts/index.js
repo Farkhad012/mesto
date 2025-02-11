@@ -1,5 +1,15 @@
-import { username, occupation, editButton, addButton } from '../blocks/profile/profile.js';
-import { modalEdit, modalAdd, enableScroll, disableScroll } from '../blocks/modal/modal.js';
+import {
+  username,
+  occupation,
+  editButton,
+  addButton
+} from '../blocks/profile/profile.js';
+import {
+  modalEdit,
+  modalAdd,
+  enableScroll,
+  disableScroll
+} from '../blocks/modal/modal.js';
 import {
   userNameInput,
   occupationInput,
@@ -10,7 +20,8 @@ import {
 } from '../blocks/form/form.js';
 import { renderCards } from '../blocks/gallery/gallery.js';
 import { cardsData } from '../blocks/card/cardsData.js';
-import { likeCard } from '../blocks/card/like.js';
+import { deleteCard } from '../blocks/card/deleteCard.js';
+import { likeCard } from '../blocks/card/likeCard.js';
 
 
 editButton.addEventListener('click', () => {

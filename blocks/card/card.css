@@ -32,13 +32,13 @@
 .card__delete-button {
   position: absolute;
   right: 20px;
-  top: 28px;
+  top: 20px;
 }
 
 .card__like-button {
   flex: 0 0 auto;
 }
 
-.card__like-button.active img {
-  background-image: url(../../images/icons/like-active.svg);
+.card__like-button>img {
+  pointer-events: none;
 }
