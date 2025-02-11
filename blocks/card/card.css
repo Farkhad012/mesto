@@ -34,3 +34,11 @@
   right: 20px;
   top: 28px;
 }
+
+.card__like-button {
+  flex: 0 0 auto;
+}
+
+.card__like-button.active img {
+  background-image: url(../../images/icons/like-active.svg);
+}

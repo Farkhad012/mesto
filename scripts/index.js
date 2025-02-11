@@ -10,6 +10,7 @@ import {
 } from '../blocks/form/form.js';
 import { renderCards } from '../blocks/gallery/gallery.js';
 import { cardsData } from '../blocks/card/cardsData.js';
+import { likeCard } from '../blocks/card/like.js';
 
 
 editButton.addEventListener('click', () => {
@@ -63,4 +64,5 @@ addForm.addEventListener('submit', (e) => {
 
 renderCards()
 
+likeCard();
 

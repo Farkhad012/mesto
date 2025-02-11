@@ -16,21 +16,10 @@
 
 @media (hover: none) {
   button:hover {
-    opacity: 1;
+    opacity: none;
   }
 }
 
-.button>svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-100%, -50%);
-}
-
-
 .button>img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: auto;
 }
