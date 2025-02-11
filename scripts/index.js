@@ -67,7 +67,7 @@ addForm.addEventListener('submit', (e) => {
   addForm.reset();
 
   // закрываем модальное окно с формой
-  // modalAdd.classList.remove('opened');
+  modalAdd.classList.remove('opened');
 
   // включаем скролл страницы
   enableScroll()
@@ -76,4 +76,4 @@ addForm.addEventListener('submit', (e) => {
 renderCards()
 
 likeCard();
-
+deleteCard();

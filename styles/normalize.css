@@ -109,6 +109,10 @@ button {
   background: transparent;
 }
 
+button>img {
+  pointer-events: none;
+}
+
 html {
   /**
     Пригодится в большинстве ситуаций
