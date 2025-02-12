@@ -9,6 +9,5 @@ export function likeCard() {
           : './images/icons/like-disabled.svg';
       }
     }
-    console.log(e.target.classList)
   })
 }

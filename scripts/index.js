@@ -3,14 +3,13 @@ import { openModal, closeModal, disableScroll, enableScroll } from '../blocks/mo
 import {
   userNameInput,
   occupationInput,
-  formEditButton,
   handleAddFormSubmit,
   handleEditFormSubmit,
 } from '../blocks/form/form.js';
 import { renderCards } from '../blocks/gallery/gallery.js';
-import { cardsData } from '../blocks/card/cardsData.js';
 import { deleteCard } from '../blocks/card/deleteCard.js';
 import { likeCard } from '../blocks/card/likeCard.js';
+import { openPopup } from '../blocks/popup/popup.js';
 
 
 editButton.addEventListener('click', () => {
@@ -37,3 +36,4 @@ renderCards()
 
 likeCard();
 deleteCard();
+openPopup();

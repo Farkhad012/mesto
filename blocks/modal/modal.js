@@ -1,4 +1,5 @@
 import { hideForms } from "../form/form.js";
+import { hidePopup } from "../popup/popup.js";
 
 export const modal = document.querySelector('.modal');
 export const modalCloseButton = document.querySelector('button.modal__close-button');
@@ -16,6 +17,7 @@ export function closeModal() {
   modal.classList.remove('opened');
   enableScroll();
   hideForms();
+  hidePopup();
 }
 
 export function openModal() {

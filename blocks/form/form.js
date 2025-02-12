@@ -2,6 +2,9 @@ import { cardsData } from "../card/cardsData.js";
 import { renderCards } from "../gallery/gallery.js";
 import { closeModal } from "../modal/modal.js";
 
+
+const formContent = document.querySelector('.form__content');
+
 // элементы формы редактирования данных
 export const userNameInput = document.querySelector('#name-input');
 export const occupationInput = document.querySelector('#occupation-input');
@@ -13,11 +16,21 @@ export const editForm = document.querySelector('#profile-edit-form');
 export const titleInput = document.querySelector('input#title');
 export const linkInput = document.querySelector('input#link');
 
+export function showFormContent() {
+  formContent.classList.add('form__content-opened');
+}
+
+export function hideFormContent() {
+  formContent.classList.remove('form__content-opened');
+}
+
 export function showAddForm() {
+  showFormContent();
   addForm.classList.add('form-add-visible');
 }
 
 export function showEditForm() {
+  showFormContent();
   editForm.classList.add('form-edit-visible');
 }
 

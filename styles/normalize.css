@@ -95,6 +95,10 @@ video {
   height: auto;
 }
 
+/* figure {
+  display: none;
+} */
+
 /**
   Наследуем свойства шрифт для полей ввода
  */
