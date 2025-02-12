@@ -36,4 +36,4 @@ handleAddFormSubmit();
 renderCards()
 
 likeCard();
-
+deleteCard();
