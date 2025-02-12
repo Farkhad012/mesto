@@ -18,10 +18,10 @@
   </header>
 
   <main class="main">
-    
+
 
     <section class="profile">
-      
+
       <div class="profile__inner container">
         <img class="profile__image" src="./images/pictures/Jacques-Yves-Cousteau.jpg" alt="avatar" width="120"
           height="120">
@@ -54,86 +54,41 @@
     </div>
   </footer>
 
-  <div 
-    id="modal-add-info" 
-    class="modal modal-add" 
-    role="dialog" 
-    aria-labelledby="modal-edit-info__title"
-    aria-modal="true"
-    >
+  <div id="modal" class="modal" role="dialog" aria-labelledby="modal" aria-modal="true">
     <div class="modal__content">
       <button class="modal__close-button" type="button">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z" fill="white"/>
-        </svg>          
+          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z"
+            fill="white" />
+        </svg>
       </button>
+
+      <!-- заголовок формы(меняется в зависимости от загруженной формы) -->
       <h2 class="modal__title h2">Новое место</h2>
-      <form id="content-add-form" class="form" action="">
-        <input 
-          id="title"
-          class="form__input" 
-          type="text" 
-          name="title" 
-          placeholder="Название"
-          autocomplete="on"
-          required
-        >
-        <input 
-          id="link"
-          class="form__input" 
-          type="text" 
-          name="link" 
-          placeholder="Ссылка на картинку"
-          autocomplete="on"
-          required
-        >
+
+      <!-- форма добавления контента -->
+      <form id="content-add-form" class="form form-add" action="">
+        <input id="title" class="form__input" type="text" name="title" placeholder="Название" autocomplete="on"
+          required>
+        <input id="link" class="form__input" type="text" name="link" placeholder="Ссылка на картинку" autocomplete="on"
+          required>
         <button class="form__button" type="submit" title="создать">
           Создать
+        </button>
+      </form>
+
+      <!-- форма редактирования профиля -->
+      <form id="profile-edit-form" class="form form-edit" action="">
+        <input id="name-input" class="form__input" type="text" name="name" placeholder="Имя" autocomplete="on" required>
+        <input id="occupation-input" class="form__input" type="text" name="occupation" placeholder="Место работы"
+          autocomplete="on" required>
+        <button id="form__edit-button" class="form__button" type="submit" title="сохранить">
+          Сохранить
         </button>
       </form>
     </div>
   </div>
 
-  <div 
-    id="modal-edit-info" 
-    class="modal modal-edit" 
-    role="dialog" 
-    aria-labelledby="modal-edit-info__title"
-    aria-modal="true"
-  >
-    <div class="modal__content">
-      <button class="modal__close-button" type="button">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z" fill="white"/>
-        </svg>          
-      </button>
-      <h2 class="modal__title h2">Редактировать</h2>
-      <form id="profile-edit-form" class="form" action="">
-        <input 
-          id="name-input"
-          class="form__input" 
-          type="text" 
-          name="name" 
-          placeholder="Имя"
-          autocomplete="on"
-          required
-        >
-        <input 
-          id="occupation-input"
-          class="form__input" 
-          type="text" 
-          name="occupation" 
-          placeholder="Место работы"
-          autocomplete="on"
-          required
-        >
-        <button id="form__edit-button" class="form__button" type="submit" title="сохранить">
-          Сохранить
-        </button>
-      </form>
-  </div>
-  </div>
-  
   <script type="module" src="./scripts/index.js"></script>
 </body>
 
