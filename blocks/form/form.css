@@ -2,6 +2,21 @@
   margin-top: 54px;
 }
 
+.form-add {
+  display: none;
+}
+
+.form-edit {
+  display: none;
+}
+
+.form-add.form-add-visible {
+  display: block;
+}
+
+.form-edit.form-edit-visible {
+  display: block;
+}
 
 @media screen and (max-height: 480px) {
   .form {
@@ -14,7 +29,7 @@
   width: 100%;
   padding-block: 14px;
   font-weight: 400;
-  font-size: 14px;  
+  font-size: 14px;
 }
 
 .form__input::placeholder {
