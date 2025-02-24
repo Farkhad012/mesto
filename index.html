@@ -43,7 +43,7 @@
 
     <section class="gallery">
       <div class="gallery__inner container">
-        <!-- здесь будут карточки -->         
+        <!-- здесь будут карточки -->
       </div>
     </section>
   </main>
@@ -53,9 +53,15 @@
       <p>© 2020 Mesto Russia</p>
     </div>
   </footer>
-
-  <div id="modal" class="modal" role="dialog" aria-labelledby="modal" aria-modal="true">
-    <div class="form__content">
+  <!-- модальное окно с формой редактирования -->
+  <div 
+    id="modal-edit-profile" 
+    class="modal" 
+    role="dialog" 
+    aria-labelledby="modal" 
+    aria-modal="true"
+  >
+    <div class="modal__content">
       <button class="modal__close-button" type="button">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z"
@@ -63,38 +69,120 @@
         </svg>
       </button>
 
-      <!-- заголовок формы(меняется в зависимости от загруженной формы) -->
-      <h2 class="modal__title h2">Новое место</h2>
+      <form 
+        id="profile-edit-form" 
+        class="form form-edit" 
+        name="edit-form" 
+        action="" 
+        aria-labelledby="Редактировать" 
+        novalidate
+      >
+        <h2 class="form__title h2">Редактировать</h2>
 
-      <!-- форма добавления контента -->
-      <form id="content-add-form" class="form form-add" action="">
-        <input id="title" class="form__input" type="text" name="title" placeholder="Название" autocomplete="on"
-          required>
-        <input id="link" class="form__input" type="text" name="link" placeholder="Ссылка на картинку" autocomplete="on"
-          required>
-        <button class="form__button" type="submit" title="создать">
-          Создать
-        </button>
-      </form>
+        <input 
+          id="name-input" 
+          class="form__input" 
+          type="text" 
+          name="username" 
+          placeholder="Имя" 
+          autocomplete="on" 
+          minlength="2" 
+          maxlength="40" 
+          required
+        >
+        <span class="name-input-error input-error">текст ошибки</span>
 
-      <!-- форма редактирования профиля -->
-      <form id="profile-edit-form" class="form form-edit" action="">
-        <input id="name-input" class="form__input" type="text" name="name" placeholder="Имя" autocomplete="on" required>
-        <input id="occupation-input" class="form__input" type="text" name="occupation" placeholder="Место работы"
-          autocomplete="on" required>
+        <input 
+          id="occupation-input" 
+          class="form__input" 
+          type="text" 
+          name="occupation" 
+          placeholder="Место работы"
+          autocomplete="on" 
+          minlength="2" 
+          maxlength="200" 
+          required
+        >
+        <span class="occupation-input-error input-error">текст ошибки</span>
+
         <button id="form__edit-button" class="form__button" type="submit" title="сохранить">
           Сохранить
         </button>
-      </form>      
+      </form>
     </div>
+  </div>
+  <!-- модальное окно с формой добавления -->
+  <div 
+    id="modal-add-content" 
+    class="modal" 
+    role="dialog" 
+    aria-labelledby="modal" 
+    aria-modal="true"
+  >
+    <div class="modal__content">
+      <button class="modal__close-button" type="button">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z"
+            fill="white" />
+        </svg>
+      </button>
 
-    <!-- попап с изображениями -->
-    <figure class="popup">
-      <img class="popup__image" src="" alt="">
-      <figcaption class="popup__description"></figcaption>
-    </figure>
+      <form 
+        id="content-add-form" 
+        class="form form-add" 
+        name="add-form" 
+        action="" 
+        novalidate
+      >
+        <h2 class="form__title h2">Новое место</h2>
+        <input 
+          id="title-input" 
+          class="form__input" 
+          type="text" 
+          name="title" 
+          placeholder="Название" 
+          autocomplete="on" 
+          minlength="2" 
+          maxlength="30"
+          required
+        >
+        <span class="title-input-error input-error">текст ошибки</span>
+
+        <input 
+          id="link-input" 
+          class="form__input" 
+          type="url" 
+          name="link" 
+          placeholder="Ссылка на картинку" 
+          autocomplete="on"
+          required
+        >
+        <span class="link-input-error input-error">текст ошибки</span>
+
+        <button id="form__add-button" class="form__button" type="submit" title="создать">
+          Создать
+        </button>
+      </form>
+    </div>
   </div>
 
+  <div id="modal-img-view" class="modal" role="dialog" aria-labelledby="modal" aria-modal="true">
+    <div class="modal__content">
+      <button class="modal__close-button" type="button">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z"
+            fill="white" />
+        </svg>
+      </button>
+
+      <figure class="popup">
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__description"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script type="module" src="./blocks/form/validate.js"></script>
   <script type="module" src="./scripts/index.js"></script>
 </body>
 

@@ -1,9 +1,8 @@
-import { hideForms } from "../form/form.js";
-import { hidePopup } from "../popup/popup.js";
-
-export const modal = document.querySelector('.modal');
+export const modals = document.querySelectorAll('.modal')
+export const modalEditProfile = document.querySelector('#modal-edit-profile');
+export const modalAddContent = document.querySelector('#modal-add-content');
+export const modalImgView = document.querySelector('#modal-img-view');
 export const modalCloseButton = document.querySelector('button.modal__close-button');
-export const modalTitle = document.querySelector('h2.modal__title')
 
 export function disableScroll() {
   document.body.style.overflow = 'hidden';
@@ -14,23 +13,40 @@ export function enableScroll() {
 }
 
 export function closeModal() {
-  modal.classList.remove('opened');
+  modals.forEach(modal => {
+    if (modal.classList.contains('opened')) {
+      modal.classList.remove('opened')
+    }
+
+    if(modal.querySelector('.modal__content').classList.contains('opened')) {
+      modal.querySelector('.modal__content').classList.remove('opened')
+    }
+  })
+
   enableScroll();
-  hideForms();
-  hidePopup();
 }
 
-export function openModal() {
+export function openModal(modal) {
   modal.classList.add('opened');
-  disableScroll();
-}
+  const modalContent = modal.querySelector('.modal__content');
+  modalContent.classList.add('opened');
 
-modalCloseButton.addEventListener('click', () => {
-  closeModal();  
-});
+
+  disableScroll()
+}
 
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('modal')) {
+  if (
+    e.target.classList.contains('modal__close-button') ||
+    e.target.classList.contains('modal')
+  ) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
     closeModal();
   }
 })
+
