@@ -19,3 +19,4 @@ export function createCard(card) {
   cardElement.innerHTML = html;
   return cardElement;
 }
+
