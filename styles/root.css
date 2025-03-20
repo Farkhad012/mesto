@@ -8,12 +8,15 @@
   --color-text-modal: #c4c4c4;
   --color-text-footer: #545454;
   --color-border: #a5a5a5;
+  --color-red: #FF0000;
 
   /* fonts */
   --font-primary: 'Inter', sans-derif;
 
   /* sizes */
   --padding-x: 20px; /* max: , min:  */
+  --padding-x-form: clamp(1.375rem, 0.8768rem + 2.4911vw, 2.25rem);
+  --padding-y-form: clamp(1.5625rem, 1.2422rem + 1.6014vw, 2.125rem);
   --edit-button-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
   --close-button-size: clamp(1.25rem, 1rem + 1.25vw, 2rem);
   --card-title-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);

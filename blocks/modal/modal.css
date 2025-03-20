@@ -1,26 +1,35 @@
 .modal {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .9);
   transition: all 0.5s ease;
   padding-left: var(--padding-x);
   padding-right: var(--padding-x);
   z-index: 99;
+
+  transition: opacity 0,5s ease, visibility 0,5s ease;
+  opacity: 0;
+  visibility: hidden;
 }
 
-.opened {
-  display: flex;
+.modal.opened {
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal__content {
   margin: auto;
-  max-width: 430px;
-  max-height: fit-content;
-  padding: 36px;
-  background-color: var(--color-light);
-  border-radius: 0.5rem;
   position: relative;
+  
+  transition: opacity 1s ease, visibility 1s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal__content.opened {
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal__close-button {
