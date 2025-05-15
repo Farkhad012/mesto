@@ -24,7 +24,7 @@
 }
 
 .form__input_type_error {
-  border-bottom: 1px solid var(--color-red);
+  border-bottom: 1px solid var(--color-error);
 }
 
 .form__input::placeholder {
@@ -38,6 +38,7 @@
   color: var(--color-light);
   border-radius: 2px;
   padding: 14px;
+  transition: all 0.5s ease;
 }
 
 @media screen and (max-height: 480px) {
@@ -57,6 +58,7 @@
   outline: 1px solid var(--color-border);
 } */
 
+/* inactiveButtonClass */
 .form__button_disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -67,7 +69,7 @@
 
 .input-error {
   visibility: hidden;
-  color: var(--color-red);
+  color: var(--color-error);
   font-size: 12px;
   font-weight: 400;
 
@@ -75,7 +77,8 @@
   min-height: 15px;
 }
 
-.input-error-active {
+/* errorClass */
+.input-error-visible {
   visibility: visible;
 }
 

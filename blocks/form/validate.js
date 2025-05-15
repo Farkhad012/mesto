@@ -4,54 +4,69 @@ export function enableValidation({
   submitButtonSelector,
   inactiveButtonClass,
   inputErrorClass,
-  activeErrorClass,
+  errorClass,
 }) {
   const form = document.querySelector(formSelector);
-  if (!form) return false;
+  const inputs = form.querySelectorAll(inputSelector);
+  const submitButton = form.querySelector(submitButtonSelector);
 
-  const inputs = Array.from(form.querySelectorAll(inputSelector));
+  console.log(`валидация ${form.name} активна`);
 
-  function showInputError(inputElement, inputErrorClass, formSelector) {
+  function checkValidity(inputElement) {
+    console.log(inputElement.validity);
+    return inputElement.validity.valid;
+  }
+
+  function showError(inputElement) {
+    const inputError = form.querySelector(`.${inputElement.name}-input-error`);
+    console.log(inputError);
+    inputError.classList.add(errorClass);
     inputElement.classList.add(inputErrorClass);
+  }
 
-    const inputErrorElement = inputElement.closest(formSelector).querySelector(`.${inputElement.id}-error`);
-    if (!inputErrorElement) return;
+  function hideError(inputElement) {
+    const inputError = form.querySelector(`.${inputElement.name}-input-error`);
+    inputError.classList.remove(errorClass);
+    inputElement.classList.remove(inputErrorClass);
+  }
 
-    let inputErrorMessage = '';
-    if (inputElement.hasAttribute('minlength') && inputElement.validity.tooShort) {
-      inputErrorMessage = `Минимальное количество символов: ${inputElement.getAttribute('minlength')}, введено: ${inputElement.value.length}`;
-    } else {
-      inputErrorMessage = inputElement.getAttribute('type') === 'url' ? 'Введите адрес' : 'Вы пропустили поле';
+  function disableSubmit() {
+    submitButton.classList.add(inactiveButtonClass);
+  }
+
+  function enableSubmit() {
+    submitButton.classList.remove(inactiveButtonClass);
+  }
+
+  function setErrorMessage(inputElement) {
+    const inputError = form.querySelector(`.${inputElement.name}-input-error`);
+    let errorMessage = "";
+    if (inputElement.validity.valueMissing) {
+      errorMessage = 'Вы пропустили это поле';
+    } else if (inputElement.validity.tooShort) {
+      errorMessage = `Количество символов должно быть не менее ${inputElement.minLength}. Введено ${inputElement.value.length}`;
+    } else if (inputElement.type === 'url') {
+      errorMessage = "Введите корректный url";
     }
 
-    inputErrorElement.classList.add(activeErrorClass);
-    inputErrorElement.textContent = inputErrorMessage;
+    inputError.textContent = errorMessage;
   }
 
-  function hideInputError(inputElement, inputErrorClass, formSelector) {
-    inputElement.classList.remove(inputErrorClass);
-    const inputErrorElement = inputElement.closest(formSelector).querySelector(`.${inputElement.id}-error`);
-    if (!inputErrorElement) return;
-    inputErrorElement.classList.remove(activeErrorClass);
-    inputErrorElement.textContent = '';
-  }
+  inputs.forEach((input) => {
+    if (!checkValidity(input)) {
+      disableSubmit();
+    }
 
-  function toggleSubmitButton(isValid) {
-    submitButton.classList.toggle(inactiveButtonClass, !isValid);
-  }
-
-  const submitButton = form.querySelector(submitButtonSelector);
-  toggleSubmitButton(false);
-
-  inputs.forEach(input => {
-    input.addEventListener('input', () => {
-      if (!input.checkValidity()) {
-        showInputError(input, inputErrorClass, formSelector);
+    input.addEventListener("input", () => {
+      if (!checkValidity(input)) {
+        showError(input);
+        disableSubmit();
+        setErrorMessage(input);
+        input.type;
       } else {
-        hideInputError(input, inputErrorClass, formSelector);
+        hideError(input);
+        enableSubmit();
       }
-
-      toggleSubmitButton(form.checkValidity());
-    })
+    });
   });
 }

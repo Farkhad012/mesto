@@ -1,4 +1,3 @@
-// функция создания карточки
 export function createCard(card) {
   const cardElement = document.createElement('div');
   cardElement.className = 'card';
@@ -19,4 +18,3 @@ export function createCard(card) {
   cardElement.innerHTML = html;
   return cardElement;
 }
-

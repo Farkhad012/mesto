@@ -4,4 +4,3 @@ export const linkInput = addForm.elements.link;
 export const titleInputError = addForm.querySelector('.title-input-error');
 export const linkInputError = addForm.querySelector('.link-input-error');
 
-
