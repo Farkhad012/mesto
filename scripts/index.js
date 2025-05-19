@@ -9,6 +9,7 @@ import {
   closeModal,
   modalAddContent,
   modalEditProfile,
+  modalImgView,
   openModal,
 } from "../blocks/modal/modal.js";
 import {
@@ -16,9 +17,11 @@ import {
   occupationInput,
   usernameInput,
 } from "../blocks/form/formEdit.js";
-import { enableValidation } from "../blocks/form/validate.js";
 import { addForm, linkInput, titleInput } from "../blocks/form/formAdd.js";
-import { createCard } from "../blocks/card/card.js";
+import { cardTemplate } from "../blocks/card/card.js";
+import { popupDescription, popupImage } from "../blocks/popup/popup.js";
+import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js";
 
 renderCards();
 
@@ -27,80 +30,74 @@ editButton.addEventListener("click", () => {
 
   usernameInput.value = username.textContent;
   occupationInput.value = occupation.textContent;
-
-  enableValidation({
-    formSelector: ".form-edit",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__button",
-    inactiveButtonClass: "form__button_disabled",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "input-error-visible",
-  });
+  editFormValidator.toggleSubmitButton();
 });
 
 editForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  if (editFormValidator.hasInvalidInput()) {
+    return;
+  }
+
   username.textContent = usernameInput.value;
   occupation.textContent = occupationInput.value;
+
   closeModal(modalEditProfile);
 });
 
 addButton.addEventListener("click", () => {
   openModal(modalAddContent);
-
-  enableValidation({
-    formSelector: ".form-add",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__button",
-    inactiveButtonClass: "form__button_disabled",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "input-error-visible",
-  });
 });
 
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  if (addFormValidator.hasInvalidInput()) {
+    return;
+  }
 
   const newCard = {
     title: titleInput.value,
     link: linkInput.value,
   };
 
-  const cardElement = createCard(newCard);
-  galleryContainer.prepend(cardElement);
+  const cardElement = new Card(newCard, cardTemplate, () => {
+    openModal(modalImgView);
+    popupImage.src = newCard.link;
+    popupDescription.textContent = newCard.title;
+  });
 
-  closeModal(modalAddContent);
+  galleryContainer.prepend(cardElement.generateCard());
+
+  closeModal(modalAddContent); 
+
+  addForm.reset();
+  addFormValidator.toggleSubmitButton();
 });
 
-function likeCard(likeElement) {
-  likeElement.classList.toggle('active');
-  const img = likeElement.querySelector('img');
-  if (img) {
-    img.src = likeElement.classList.contains('active')
-      ? './images/icons/like-active.svg'
-      : './images/icons/like-disabled.svg';
-  }
-};
+const editFormValidator = new FormValidator(
+  {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "input-error-visible",
+  },
+  editForm
+);
 
-function deleteCard(cardElement) {
-  if (cardElement) {
-    cardElement.remove();
-  }
-};
+editFormValidator.enableValidation();
 
-galleryContainer.addEventListener('click', (e) => {
-  if (e.target.classList.contains('card__image')) {
-    openModal(modalImgView);
-    popupImage.src = e.target.src;
-    popupDescription.textContent = e.target.alt;
-  }
+const addFormValidator = new FormValidator(
+  {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "input-error-visible",
+  },
+  addForm
+);
 
-  if (e.target.classList.contains('card__like-button')) {
-    likeCard(e.target)
-  }
-
-  if (e.target.classList.contains('card__delete-button')) {
-    deleteCard(e.target.closest('.card'));
-  }
-})
+addFormValidator.enableValidation();
