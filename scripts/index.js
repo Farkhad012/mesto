@@ -1,4 +1,4 @@
-import { galleryContainer, renderCards } from "../blocks/gallery/gallery.js";
+import { renderCards } from "../blocks/gallery/gallery.js";
 import {
   addButton,
   editButton,
@@ -9,7 +9,6 @@ import {
   closeModal,
   modalAddContent,
   modalEditProfile,
-  modalImgView,
   openModal,
 } from "../blocks/modal/modal.js";
 import {
@@ -18,10 +17,8 @@ import {
   usernameInput,
 } from "../blocks/form/formEdit.js";
 import { addForm, linkInput, titleInput } from "../blocks/form/formAdd.js";
-import { cardTemplate } from "../blocks/card/card.js";
-import { popupDescription, popupImage } from "../blocks/popup/popup.js";
+import { createCard } from "../blocks/card/card.js";
 import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
 
 renderCards();
 
@@ -36,10 +33,6 @@ editButton.addEventListener("click", () => {
 editForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (editFormValidator.hasInvalidInput()) {
-    return;
-  }
-
   username.textContent = usernameInput.value;
   occupation.textContent = occupationInput.value;
 
@@ -53,22 +46,12 @@ addButton.addEventListener("click", () => {
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (addFormValidator.hasInvalidInput()) {
-    return;
-  }
-
   const newCard = {
     title: titleInput.value,
     link: linkInput.value,
   };
 
-  const cardElement = new Card(newCard, cardTemplate, () => {
-    openModal(modalImgView);
-    popupImage.src = newCard.link;
-    popupDescription.textContent = newCard.title;
-  });
-
-  galleryContainer.prepend(cardElement.generateCard());
+  createCard(newCard);
 
   closeModal(modalAddContent); 
 

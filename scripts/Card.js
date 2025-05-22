@@ -1,60 +1,58 @@
-import { galleryContainer } from "../blocks/gallery/gallery.js";
-
 export class Card {
-  constructor(card, cardTemplate, clickFunction) {
-    this._link = card.link;
-    this._title = card.title;
+  constructor(cardData, cardTemplate, handleCardClick) {
+    this._link = cardData.link;
+    this._title = cardData.title;
     this._cardTemplate = cardTemplate;
-    this._clickFunction = clickFunction;
+    this._handleCardClick = handleCardClick;
+
+    this._element = null;
+    this._likeButton = null;
+    this._likeIcon = null;
+    this._deleteButton = null;
   }
 
   _getTemplate() {
-    const cardElement = this._cardTemplate.content
-      .querySelector(".card")
-      .cloneNode(true);
+    return this._cardTemplate.content.querySelector(".card").cloneNode(true);
+  }
 
-    return cardElement;
+  _setElements() {
+    this._likeButton = this._element.querySelector(".card__like-button");
+    this._likeIcon = this._element.querySelector(".card__like-icon");
+    this._deleteButton = this._element.querySelector(".card__delete-button");
+    this._cardImage = this._element.querySelector(".card__image");
+    this._cardTitle = this._element.querySelector(".card__title");
+  }
+
+  _fillCardData() {
+    this._cardImage.src = this._link;
+    this._cardImage.alt = `${this._title}`;
+    this._cardTitle.textContent = this._title;
+  }
+
+  _handleLikeClick() {
+    this._likeButton.classList.toggle("active");
+    this._likeIcon.src = this._likeButton.classList.contains("active")
+      ? "../images/icons/like-active.svg"
+      : "../images/icons/like-disabled.svg";
+  }
+
+  _handleDeleteClick() {
+    this._element.remove();
+    this._element = null;
+  }
+
+  _setEventListeners() {
+    this._deleteButton.addEventListener("click", () => this._handleDeleteClick());
+    this._likeButton.addEventListener("click", () => this._handleLikeClick());
+    this._cardImage.addEventListener("click", () => this._handleCardClick());
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    this.setEventListeners();
-
-    this._element.querySelector(".card__image").src = this._link;
-    this._element.querySelector(".card__title").textContent = this._title;
+    this._setElements();
+    this._fillCardData();
+    this._setEventListeners();
 
     return this._element;
-  }
-
-  likeCard() {
-    this._element.classList.toggle("active");
-    const likeIcon = this._element.querySelector('.card__like-icon');
-    likeIcon.src = this._element.classList.contains("active")
-          ? "../images/icons/like-active.svg"
-          : "../images/icons/like-disabled.svg";
-    
-  }
-
-  deleteCard() {
-    if (this._element) {
-      this._element.remove();
-    }
-  }
-
-  setEventListeners() {
-    this._element.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (e.target.classList.contains("card__image")) {
-        this._clickFunction();
-      }
-
-      if (e.target.classList.contains("card__like-button")) {
-        this.likeCard();
-      }
-
-      if (e.target.classList.contains("card__delete-button")) {
-        this.deleteCard();
-      }
-    });
   }
 }
