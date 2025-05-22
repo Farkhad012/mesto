@@ -1,0 +1,17 @@
+.popup {
+  margin: auto;
+  max-width: 75vw;
+}
+
+.popup.popup-visible {
+  display: block;
+}
+
+.popup__image {
+  max-height: 75vh;
+}
+
+.popup__description {
+  font-size: 12px;
+  margin-top: 10px;
+}

@@ -1,0 +1,4 @@
+.header__inner {
+  padding-block: 45px 40px;
+  border-bottom: 1px solid var(--color-border);
+}

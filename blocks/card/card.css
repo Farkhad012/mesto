@@ -1,0 +1,45 @@
+.card {
+  min-height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.card__image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__description {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 42px;
+  padding: 25px 21px;
+
+}
+
+.card__title {  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__delete-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.card__like-button {
+  flex: 0 0 auto;
+}
+
+.card__like-button>img {
+  pointer-events: none;
+}
