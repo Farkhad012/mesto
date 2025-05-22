@@ -42,8 +42,8 @@
     </section>
 
     <section class="gallery">
-      <div class="gallery__inner container">
-        <!-- здесь будут карточки -->
+      <div class="gallery__inner container"> 
+        <!-- контейнер для карточек --> 
       </div>
     </section>
   </main>
@@ -54,13 +54,7 @@
     </div>
   </footer>
   <!-- модальное окно с формой редактирования -->
-  <div 
-    id="modal-edit-profile" 
-    class="modal" 
-    role="dialog" 
-    aria-labelledby="modal" 
-    aria-modal="true"
-  >
+  <div id="modal-edit-profile" class="modal" role="dialog" aria-labelledby="modal" aria-modal="true">
     <div class="modal__content">
       <button class="modal__close-button" type="button">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,40 +63,16 @@
         </svg>
       </button>
 
-      <form 
-        id="profile-edit-form" 
-        class="form form-edit" 
-        name="edit-form" 
-        action="" 
-        aria-labelledby="Редактировать" 
-        novalidate
-      >
+      <form id="profile-edit-form" class="form form-edit" name="edit-form" action="" aria-labelledby="Редактировать"
+        novalidate>
         <h2 class="form__title h2">Редактировать</h2>
 
-        <input 
-          id="name-input" 
-          class="form__input" 
-          type="text" 
-          name="username" 
-          placeholder="Имя" 
-          autocomplete="on" 
-          minlength="2" 
-          maxlength="40" 
-          required
-        >
-        <span class="name-input-error input-error">текст ошибки</span>
+        <input id="name-input" class="form__input" type="text" name="username" placeholder="Имя" autocomplete="on"
+          minlength="2" maxlength="40" required>
+        <span class="username-input-error input-error">текст ошибки</span>
 
-        <input 
-          id="occupation-input" 
-          class="form__input" 
-          type="text" 
-          name="occupation" 
-          placeholder="Место работы"
-          autocomplete="on" 
-          minlength="2" 
-          maxlength="200" 
-          required
-        >
+        <input id="occupation-input" class="form__input" type="text" name="occupation" placeholder="Место работы"
+          autocomplete="on" minlength="2" maxlength="200" required>
         <span class="occupation-input-error input-error">текст ошибки</span>
 
         <button id="form__edit-button" class="form__button" type="submit" title="сохранить">
@@ -112,13 +82,7 @@
     </div>
   </div>
   <!-- модальное окно с формой добавления -->
-  <div 
-    id="modal-add-content" 
-    class="modal" 
-    role="dialog" 
-    aria-labelledby="modal" 
-    aria-modal="true"
-  >
+  <div id="modal-add-content" class="modal" role="dialog" aria-labelledby="modal" aria-modal="true">    
     <div class="modal__content">
       <button class="modal__close-button" type="button">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,36 +91,14 @@
         </svg>
       </button>
 
-      <form 
-        id="content-add-form" 
-        class="form form-add" 
-        name="add-form" 
-        action="" 
-        novalidate
-      >
+      <form id="content-add-form" class="form form-add" name="add-form" action="" novalidate>
         <h2 class="form__title h2">Новое место</h2>
-        <input 
-          id="title-input" 
-          class="form__input" 
-          type="text" 
-          name="title" 
-          placeholder="Название" 
-          autocomplete="on" 
-          minlength="2" 
-          maxlength="30"
-          required
-        >
+        <input id="title-input" class="form__input" type="text" name="title" placeholder="Название" autocomplete="on"
+          minlength="2" maxlength="30" required>
         <span class="title-input-error input-error">текст ошибки</span>
 
-        <input 
-          id="link-input" 
-          class="form__input" 
-          type="url" 
-          name="link" 
-          placeholder="Ссылка на картинку" 
-          autocomplete="on"
-          required
-        >
+        <input id="link-input" class="form__input" type="url" name="link" placeholder="Ссылка на изображение"
+          autocomplete="on" required>
         <span class="link-input-error input-error">текст ошибки</span>
 
         <button id="form__add-button" class="form__button" type="submit" title="создать">
@@ -182,7 +124,21 @@
     </div>
   </div>
 
-  <script type="module" src="./blocks/form/validate.js"></script>
+  <template class="card-template">
+    <div class="card">
+      <img class="card__image" src="" alt="">
+      <div class="card__description">
+        <h2 class="card__title h2"></h2>
+        <button class="card__like-button button">
+          <img class="card__like-icon" src="./images/icons/like-disabled.svg" alt="" width="22" height="19">
+        </button>
+      </div>
+      <button class="card__delete-button button">
+        <img class="card__delete-icon" src="./images/icons/delete.svg" alt="" width="18" height="19">
+      </button>
+    </div>
+  </template>
+
   <script type="module" src="./scripts/index.js"></script>
 </body>
 

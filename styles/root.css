@@ -8,7 +8,7 @@
   --color-text-modal: #c4c4c4;
   --color-text-footer: #545454;
   --color-border: #a5a5a5;
-  --color-red: #FF0000;
+  --color-error: #FF0000;
 
   /* fonts */
   --font-primary: 'Inter', sans-derif;

@@ -1,22 +1,15 @@
-// функция создания карточки
+import { Card } from "../../scripts/Card.js";
+import { modalImgView, openModal } from "../modal/modal.js";
+import { popupDescription, popupImage } from "../popup/popup.js";
+
+export const cardTemplate = document.querySelector(".card-template");
+
 export function createCard(card) {
-  const cardElement = document.createElement('div');
-  cardElement.className = 'card';
+  const cardElement = new Card(card, cardTemplate, () => {
+    openModal(modalImgView);
+    popupImage.src = card.link;
+    popupDescription.textContent = card.title;
+  });
 
-  const html = `
-    <img class="card__image" src="${card.link}" alt="${card.title}">
-    <div class="card__description">
-      <h2 class="card__title h2">${card.title}</h2>
-      <button class="card__like-button button">
-        <img src="./images/icons/like-disabled.svg" alt="" width="22" height="19">
-      </button>
-    </div>
-    <button class="card__delete-button button">
-        <img src="./images/icons/delete.svg" alt="" width="18" height="19">
-    </button>
-  `;
-
-  cardElement.innerHTML = html;
-  return cardElement;
+  return cardElement.generateCard();
 }
-

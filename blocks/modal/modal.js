@@ -35,7 +35,7 @@ export function openModal(modal) {
   disableScroll()
 }
 
-document.addEventListener('click', (e) => {
+document.addEventListener('mousedown', (e) => {
   if (
     e.target.classList.contains('modal__close-button') ||
     e.target.classList.contains('modal')

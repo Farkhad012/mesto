@@ -1,103 +1,86 @@
-import { createCard } from '../blocks/card/card.js';
-
-import { galleryContainer, renderCards } from '../blocks/gallery/gallery.js';
+import { galleryContainer, renderCards } from "../blocks/gallery/gallery.js";
 import {
   addButton,
   editButton,
   occupation,
-  openAddContentForm,
-  openProfileEditForm,
-  username
-} from '../blocks/profile/profile.js';
+  username,
+} from "../blocks/profile/profile.js";
+import {
+  closeModal,
+  modalAddContent,
+  modalEditProfile,
+  openModal,
+} from "../blocks/modal/modal.js";
+import {
+  editForm,
+  occupationInput,
+  usernameInput,
+} from "../blocks/form/formEdit.js";
+import { addForm, linkInput, titleInput } from "../blocks/form/formAdd.js";
+import { createCard } from "../blocks/card/card.js";
+import { FormValidator } from "./FormValidator.js";
 
-import { editForm, nameInput, occupationInput } from '../blocks/form/formEdit.js';
-import { addForm, linkInput, titleInput } from '../blocks/form/formAdd.js';
+renderCards();
 
-import { closeModal, modalImgView, openModal } from '../blocks/modal/modal.js';
-import { popupDescription, popupImage } from '../blocks/popup/popup.js';
-import { enableValidation } from '../blocks/form/validate.js';
+editButton.addEventListener("click", () => {
+  openModal(modalEditProfile);
 
-renderCards()
-
-editButton.addEventListener('click', () => {
-  openProfileEditForm();
+  usernameInput.value = username.textContent;
+  occupationInput.value = occupation.textContent;
+  editFormValidator.toggleSubmitButton();
 });
 
-editForm.addEventListener('submit', (e) => {
+editForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  username.textContent = usernameInput.value;
   occupation.textContent = occupationInput.value;
-  username.textContent = nameInput.value;
 
-  closeModal();
-})
+  closeModal(modalEditProfile);
+});
 
-addButton.addEventListener('click', () => {
-  openAddContentForm();
-})
+addButton.addEventListener("click", () => {
+  openModal(modalAddContent);
+});
 
-addForm.addEventListener('submit', (e) => {
+addForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const newCard = {
     title: titleInput.value,
-    link: linkInput.value
-  }
+    link: linkInput.value,
+  };
 
-  const cardElement = createCard(newCard);
-  galleryContainer.prepend(cardElement);
+  galleryContainer.prepend(createCard(newCard));
+
+  closeModal(modalAddContent); 
 
   addForm.reset();
+  addFormValidator.toggleSubmitButton();
+});
 
-  closeModal();
-})
+const editFormValidator = new FormValidator(
+  {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "input-error-visible",
+  },
+  editForm
+);
 
-function likeCard(likeElement) {
-  likeElement.classList.toggle('active');
-  const img = likeElement.querySelector('img');
-  if (img) {
-    img.src = likeElement.classList.contains('active')
-      ? './images/icons/like-active.svg'
-      : './images/icons/like-disabled.svg';
-  }
-};
+editFormValidator.enableValidation();
 
-function deleteCard(cardElement) {
-  if (cardElement) {
-    cardElement.remove();
-  }
-};
+const addFormValidator = new FormValidator(
+  {
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "input-error-visible",
+  },
+  addForm
+);
 
-galleryContainer.addEventListener('click', (e) => {
-  if (e.target.classList.contains('card__image')) {
-    openModal(modalImgView);
-    popupImage.src = e.target.src;
-    popupDescription.textContent = e.target.alt;
-  }
-
-  if (e.target.classList.contains('card__like-button')) {
-    likeCard(e.target)
-  }
-
-  if (e.target.classList.contains('card__delete-button')) {
-    deleteCard(e.target.closest('.card'));
-  }
-})
-
-enableValidation({
-  formSelector: '.form-edit',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__button',
-  inactiveButtonClass: 'form__button_disabled',
-  inputErrorClass: 'form__input_type_error',
-  activeErrorClass: 'input-error-active',
-})
-
-enableValidation({
-  formSelector: '.form-add',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__button',
-  inactiveButtonClass: 'form__button_disabled',
-  inputErrorClass: 'form__input_type_error',
-  activeErrorClass: 'input-error-active',
-})
+addFormValidator.enableValidation();
