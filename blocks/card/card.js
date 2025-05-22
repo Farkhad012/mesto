@@ -1,5 +1,4 @@
 import { Card } from "../../scripts/Card.js";
-import { galleryContainer } from "../gallery/gallery.js";
 import { modalImgView, openModal } from "../modal/modal.js";
 import { popupDescription, popupImage } from "../popup/popup.js";
 
@@ -12,5 +11,5 @@ export function createCard(card) {
     popupDescription.textContent = card.title;
   });
 
-  galleryContainer.prepend(cardElement.generateCard());
+  return cardElement.generateCard();
 }

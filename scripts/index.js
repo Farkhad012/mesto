@@ -1,4 +1,4 @@
-import { renderCards } from "../blocks/gallery/gallery.js";
+import { galleryContainer, renderCards } from "../blocks/gallery/gallery.js";
 import {
   addButton,
   editButton,
@@ -51,7 +51,7 @@ addForm.addEventListener("submit", (e) => {
     link: linkInput.value,
   };
 
-  createCard(newCard);
+  galleryContainer.prepend(createCard(newCard));
 
   closeModal(modalAddContent); 
 
